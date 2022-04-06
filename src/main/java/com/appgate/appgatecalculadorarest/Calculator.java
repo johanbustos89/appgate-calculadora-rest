@@ -20,69 +20,81 @@ public class Calculator {
     private final ArrayList<Long> operandos = new ArrayList();
 
     public Long nuevaOperacion() {
-        operandos.clear();
+        try {
+            operandos.clear();
+
+        } catch (Exception e) {
+            System.err.println("Ocurrio error:" + e.getMessage());
+        }
         return counter.incrementAndGet();
     }
 
     public ArrayList<Long> agregarOperando(Long operando) {
-        operandos.add(operando);
-        System.out.println("Los operandos son:");
-        for (Long ele : operandos) {
-            System.out.println(ele);
+        try {
+            operandos.add(operando);
+            System.out.println("Los operandos son:");
+            for (Long ele : operandos) {
+                System.out.println(ele);
+            }
+        } catch (Exception e) {
+            System.err.println("Ocurrio error:" + e.getMessage());
         }
+
         return operandos;
     }
-
 
     public Long realizarOperacion(String operacion) {
 
         System.out.println("La operacion es:" + operacion);
 
         Long resultado = new Long(0);
-        switch (operacion) {
+        try {
+            switch (operacion) {
 
-            case "suma": {
-                resultado = operandos.stream().map(ele -> ele).reduce(resultado, (accumulator, _item) -> accumulator + _item);
-                operandos.clear();
-                operandos.add(resultado);
-                System.out.println("Resultado es:" + resultado);
-                break;
-            }
-
-            case "resta": {
-                for (Long ele : operandos) {
-
-                    resultado -= ele;
+                case "suma": {
+                    resultado = operandos.stream().map(ele -> ele).reduce(resultado, (accumulator, _item) -> accumulator + _item);
+                    operandos.clear();
+                    operandos.add(resultado);
+                    System.out.println("Resultado es:" + resultado);
+                    break;
                 }
-                operandos.clear();
-                operandos.add(resultado);
-                System.out.println("Resultado es:" + resultado);
-                break;
-            }
 
-            case "multi": {
-                for (Long ele : operandos) {
+                case "resta": {
+                    for (Long ele : operandos) {
 
-                    resultado *= ele;
+                        resultado -= ele;
+                    }
+                    operandos.clear();
+                    operandos.add(resultado);
+                    System.out.println("Resultado es:" + resultado);
+                    break;
                 }
-                operandos.clear();
-                operandos.add(resultado);
-                System.out.println("Resultado es:" + resultado);
-                break;
-            }
 
-            case "divi": {
-                for (Long ele : operandos) {
+                case "multi": {
+                    for (Long ele : operandos) {
 
-                    resultado /= ele;
+                        resultado *= ele;
+                    }
+                    operandos.clear();
+                    operandos.add(resultado);
+                    System.out.println("Resultado es:" + resultado);
+                    break;
                 }
-                operandos.clear();
-                operandos.add(resultado);
-                System.out.println("Resultado es:" + resultado);
-                break;
+
+                case "divi": {
+                    for (Long ele : operandos) {
+
+                        resultado /= ele;
+                    }
+                    operandos.clear();
+                    operandos.add(resultado);
+                    System.out.println("Resultado es:" + resultado);
+                    break;
+                }
             }
+        } catch (Exception e) {
+            System.err.println("Ocurrio error:" + e.getMessage());
         }
         return resultado;
     }
-
 }
