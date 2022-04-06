@@ -15,13 +15,74 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class Calculator {
-    
+
     private final AtomicLong counter = new AtomicLong();
     private final ArrayList<Long> operandos = new ArrayList();
-    
-     public Long nuevaOperacion() {
-          operandos.clear();
+
+    public Long nuevaOperacion() {
+        operandos.clear();
         return counter.incrementAndGet();
-     }
-    
+    }
+
+    public ArrayList<Long> agregarOperando(Long operando) {
+        operandos.add(operando);
+        System.out.println("Los operandos son:");
+        for (Long ele : operandos) {
+            System.out.println(ele);
+        }
+        return operandos;
+    }
+
+
+    public Long realizarOperacion(String operacion) {
+
+        System.out.println("La operacion es:" + operacion);
+
+        Long resultado = new Long(0);
+        switch (operacion) {
+
+            case "suma": {
+                resultado = operandos.stream().map(ele -> ele).reduce(resultado, (accumulator, _item) -> accumulator + _item);
+                operandos.clear();
+                operandos.add(resultado);
+                System.out.println("Resultado es:" + resultado);
+                break;
+            }
+
+            case "resta": {
+                for (Long ele : operandos) {
+
+                    resultado -= ele;
+                }
+                operandos.clear();
+                operandos.add(resultado);
+                System.out.println("Resultado es:" + resultado);
+                break;
+            }
+
+            case "multi": {
+                for (Long ele : operandos) {
+
+                    resultado *= ele;
+                }
+                operandos.clear();
+                operandos.add(resultado);
+                System.out.println("Resultado es:" + resultado);
+                break;
+            }
+
+            case "divi": {
+                for (Long ele : operandos) {
+
+                    resultado /= ele;
+                }
+                operandos.clear();
+                operandos.add(resultado);
+                System.out.println("Resultado es:" + resultado);
+                break;
+            }
+        }
+        return resultado;
+    }
+
 }
