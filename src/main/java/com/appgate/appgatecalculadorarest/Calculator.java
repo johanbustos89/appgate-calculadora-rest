@@ -30,12 +30,17 @@ public class Calculator {
         return counter.incrementAndGet();
     }
 
-    public ArrayList<Long> agregarOperando(Long operando) {
+    public ArrayList<Long> agregarOperando(Long operando, Long idoperacion) {
         try {
-            operandos.add(operando);
-            System.out.println("Los operandos son:");
-            for (Long ele : operandos) {
-                System.out.println(ele);
+            
+            
+            if (!idoperacion.equals(counter.longValue())) {
+                System.out.println("idOperacion invalido");
+            } else {
+                
+                operandos.add(operando);
+                System.out.println("Los operandos son:");
+                System.out.println(operandos);
             }
         } catch (Exception e) {
             System.err.println("Ocurrio error:" + e.getMessage());
@@ -44,56 +49,57 @@ public class Calculator {
         return operandos;
     }
 
-    public Long realizarOperacion(String operacion) {
+    public Long realizarOperacion(String operacion, Long idoperacion) {
 
-        System.out.println("La operacion es:" + operacion);
-
-        Long resultado=new Long(0);
+        Long resultado = new Long(0);
         try {
-            switch (operacion) {
 
-                case "suma": {
-                    //resultado = operandos.stream().parallel().reduce(0,(a,b)->  a + b);
-                    
-                   // resultado = operandos.stream().map(ele -> ele).reduce(0, (accumulator, _item) -> accumulator + _item);
-                    //resultado = operandos.stream().reduce(new Long(0),(a,b)->  a + b);
-                    //resultado = operandos.stream().reduce(new Long(0),Long::sum);
-                    resultado = operandos.stream().reduce(new Long(0),Long::sum);
-                    operandos.clear();
-                    operandos.add(resultado);
-                    System.out.println("Resultado es:" + resultado);
-                    break;
-                }
-                case "resta": {
-                    resultado = operandos.stream().reduce(new Long(0),(a,b)->  a - b);
-                    operandos.clear();
-                    operandos.add(resultado);
-                    System.out.println("Resultado es:" + resultado);
-                    break;
-                }
-                case "multi": {
-                   
-                    resultado = operandos.stream().reduce(new Long(1),(a,b)->  a * b);
-                    operandos.clear();
-                    operandos.add(resultado);
-                    System.out.println("Resultado es:" + resultado);
-                    break;
-                }
-                case "divi": {
-                    resultado = operandos.stream().reduce(new Long(1),(a,b)->  a / b);
-                    operandos.clear();
-                    operandos.add(resultado);
-                    System.out.println("Resultado es:" + resultado);
-                    break;
-                }
-                  case "poten": {
-                    resultado = operandos.stream().reduce(new Long(1),(a,b)->  (long)Math.pow(a,b));
-                    operandos.clear();
-                    operandos.add(resultado);
-                    System.out.println("Resultado es:" + resultado);
-                    break;
+            if (!idoperacion.equals(counter.longValue())) {
+                System.out.println("idOperacion invalido");
+            } else {
+                System.out.println("La operacion es:" + operacion);
+
+                switch (operacion) {
+
+                    case "suma": {
+                        resultado = operandos.stream().reduce(new Long(0), Long::sum);
+                        operandos.clear();
+                        operandos.add(resultado);
+                        System.out.println("Resultado es:" + resultado);
+                        break;
+                    }
+                    case "resta": {
+                        resultado = operandos.stream().reduce(new Long(0), (a, b) -> a - b);
+                        operandos.clear();
+                        operandos.add(resultado);
+                        System.out.println("Resultado es:" + resultado);
+                        break;
+                    }
+                    case "multi": {
+
+                        resultado = operandos.stream().reduce(new Long(1), (a, b) -> a * b);
+                        operandos.clear();
+                        operandos.add(resultado);
+                        System.out.println("Resultado es:" + resultado);
+                        break;
+                    }
+                    case "divi": {
+                        resultado = operandos.stream().reduce(new Long(1), (a, b) -> a / b);
+                        operandos.clear();
+                        operandos.add(resultado);
+                        System.out.println("Resultado es:" + resultado);
+                        break;
+                    }
+                    case "poten": {
+                        resultado = operandos.stream().reduce(new Long(1), (a, b) -> (long) Math.pow(a, b));
+                        operandos.clear();
+                        operandos.add(resultado);
+                        System.out.println("Resultado es:" + resultado);
+                        break;
+                    }
                 }
             }
+
         } catch (Exception e) {
             System.err.println("Ocurrio error:" + e.getMessage());
         }
