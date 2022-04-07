@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class Controller {
-    
+
     @Autowired
     Calculator calculadora;
 
@@ -26,12 +26,12 @@ public class Controller {
         return calculadora.nuevaOperacion();
     }
 
-   @GetMapping("/agregarOperando")
+    @GetMapping("/agregarOperando")
     public ArrayList<Long> agregarOperando(@RequestParam(value = "operando") Long operando) {
         return calculadora.agregarOperando(operando);
     }
-    
-     @GetMapping("/realizarOperacion")
+
+    @GetMapping("/realizarOperacion")
     public Long realizarOperacion(@RequestParam(value = "operacion") String operacion) {
         return calculadora.realizarOperacion(operacion);
     }
