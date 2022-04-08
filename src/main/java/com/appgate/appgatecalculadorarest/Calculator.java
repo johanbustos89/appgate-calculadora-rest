@@ -7,7 +7,6 @@ package com.appgate.appgatecalculadorarest;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Stream;
 import org.springframework.stereotype.Service;
 
 /**
