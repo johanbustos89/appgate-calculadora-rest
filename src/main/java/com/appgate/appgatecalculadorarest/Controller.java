@@ -5,10 +5,13 @@
  */
 package com.appgate.appgatecalculadorarest;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,12 +30,12 @@ public class Controller {
         return calculadora.nuevaOperacion();
     }
 
-    @GetMapping("/agregarOperando")
+    @RequestMapping(value = "/agregarOperando", method = RequestMethod.PUT)
     public ArrayList<Long> agregarOperando(@RequestParam(value = "operando") Long operando, @RequestParam(value = "idoperacion") Long idoperacion) {
         return calculadora.agregarOperando(operando,idoperacion);
     }
 
-    @GetMapping("/realizarOperacion")
+    @RequestMapping(value="/realizarOperacion", method = RequestMethod.PUT)
     public Long realizarOperacion(@RequestParam(value = "operacion") String operacion,@RequestParam(value = "idoperacion") Long idoperacion) {
         return calculadora.realizarOperacion(operacion, idoperacion);
     }
