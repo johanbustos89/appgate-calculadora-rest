@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "2c69bc0a-49ee-4232-adbd-b9f0c1096dea",
+		"name": "appgate-calculadora-postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "nuevaOperacion",
+			"item": [
+				{
+					"name": "new",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "agregarOperando",
+			"item": [
+				{
+					"name": "agregar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://184.73.147.65:8080/agregarOperando?operando=2&idoperacion=10",
+							"protocol": "http",
+							"host": [
+								"184",
+								"73",
+								"147",
+								"65"
+							],
+							"port": "8080",
+							"path": [
+								"agregarOperando"
+							],
+							"query": [
+								{
+									"key": "operando",
+									"value": "2",
+									"description": "numero que se desea agregar como operando"
+								},
+								{
+									"key": "idoperacion",
+									"value": "10",
+									"description": "identificador obtenido al llamar nuevaOperacion"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "realizarOperacion",
+			"item": [
+				{
+					"name": "suma",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://184.73.147.65:8080/realizarOperacion?operacion=suma&idoperacion=10",
+							"protocol": "http",
+							"host": [
+								"184",
+								"73",
+								"147",
+								"65"
+							],
+							"port": "8080",
+							"path": [
+								"realizarOperacion"
+							],
+							"query": [
+								{
+									"key": "operacion",
+									"value": "suma",
+									"description": "opracion suma"
+								},
+								{
+									"key": "idoperacion",
+									"value": "10",
+									"description": "identificador obtenido al llamar nuevaOperacion"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://184.73.147.65:8080/realizarOperacion?operacion=resta&idoperacion=8",
+							"protocol": "http",
+							"host": [
+								"184",
+								"73",
+								"147",
+								"65"
+							],
+							"port": "8080",
+							"path": [
+								"realizarOperacion"
+							],
+							"query": [
+								{
+									"key": "operacion",
+									"value": "resta",
+									"description": "opracion resta"
+								},
+								{
+									"key": "idoperacion",
+									"value": "8",
+									"description": "identificador obtenido en al llamar nuevaOperacion"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "multi",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://184.73.147.65:8080/realizarOperacion?operacion=suma&idoperacion=8",
+							"protocol": "http",
+							"host": [
+								"184",
+								"73",
+								"147",
+								"65"
+							],
+							"port": "8080",
+							"path": [
+								"realizarOperacion"
+							],
+							"query": [
+								{
+									"key": "operacion",
+									"value": "suma",
+									"description": "opracion multiplicacion"
+								},
+								{
+									"key": "idoperacion",
+									"value": "8",
+									"description": "identificador obtenido en al llamar nuevaOperacion"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "divi",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://184.73.147.65:8080/realizarOperacion?operacion=divi&idoperacion=8",
+							"protocol": "http",
+							"host": [
+								"184",
+								"73",
+								"147",
+								"65"
+							],
+							"port": "8080",
+							"path": [
+								"realizarOperacion"
+							],
+							"query": [
+								{
+									"key": "operacion",
+									"value": "divi",
+									"description": "opracion division"
+								},
+								{
+									"key": "idoperacion",
+									"value": "8",
+									"description": "identificador obtenido en al llamar nuevaOperacion"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "poten",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://184.73.147.65:8080/realizarOperacion?operacion=poten&idoperacion=8",
+							"protocol": "http",
+							"host": [
+								"184",
+								"73",
+								"147",
+								"65"
+							],
+							"port": "8080",
+							"path": [
+								"realizarOperacion"
+							],
+							"query": [
+								{
+									"key": "operacion",
+									"value": "poten",
+									"description": "opracion potenciacion"
+								},
+								{
+									"key": "idoperacion",
+									"value": "8",
+									"description": "identificador obtenido al llamar nuevaOperacion"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
